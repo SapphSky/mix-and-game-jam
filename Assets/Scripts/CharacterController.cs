@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace GameJam {
 	public class CharacterController : MonoBehaviour {
+		[System.Serializable]
 		public struct Inputs {
 			public string horizontal;
 			public string vertical;
@@ -12,27 +13,40 @@ namespace GameJam {
 			public string vacuum;
 			public string blower;
 		}
+		[Tooltip("Assign input axes here.")]
 		public Inputs inputs;
 
-		public Transform aimTransform;
+		[SerializeField] private Rigidbody2D body;
+		[SerializeField] private Rigidbody2D aimBody;
 
 		private Camera cam;
+		private Vector2 mousePos;
 
-		private void Start() {
+		private void Awake() {
+			body = GetComponent<Rigidbody2D>();
 			cam = Camera.main;
 		}
 
 		private void Update() {
-			Vector3 point = new Vector3();
-			Event currentEvent = Event.current;
-			Vector2 mousePos = new Vector2();
+			// Aim
+			mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-			mousePos.x = currentEvent.mousePosition.x;
-			mousePos.y = cam.pixelHeight - currentEvent.mousePosition.y;
+			// Move
+			body.AddForce(Vector2.right * Input.GetAxis(inputs.horizontal), ForceMode2D.Impulse);
 
-			point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+			// Jump
+			if (Input.GetButtonDown(inputs.jump)) {
+				body.AddForce(Vector2.up * 5.0f, ForceMode2D.Impulse);
+			}
 
-			aimTransform.LookAt(point, Vector3.up);
+			// Vacuum input
+			aimBody.GetComponent<Vacuum>().active = Input.GetButton(inputs.vacuum);
+		}
+
+		private void FixedUpdate() {
+			Vector2 lookDir = mousePos - body.position;
+			float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+			aimBody.rotation = angle;
 		}
 	}
 }
