@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Rigidbody enemy;
+    public Rigidbody2D enemy;
 
     [Header("Random movement")]
     public float maxRandRangeX = 0;
@@ -51,21 +51,21 @@ public class EnemyController : MonoBehaviour
         }
     }
     //when player is in radius
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         playerDetect = true;
 
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Vector2 playerPos = new Vector2(other.transform.position.x - transform.position.x, other.transform.position.y - transform.position.y);
 
             enemy.velocity = playerPos;
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         playerDetect = false;
     }
 
-    
+
 }
