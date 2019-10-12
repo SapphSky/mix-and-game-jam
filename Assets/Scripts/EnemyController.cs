@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public Rigidbody2D enemy;
+    private Rigidbody2D vacuum;
+
 
     [Header("Random movement")]
     public float maxRandRangeX = 0;
@@ -67,5 +69,13 @@ public class EnemyController : MonoBehaviour
         playerDetect = false;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
 
+        if (collision.gameObject.tag =="Player" && Input.GetButton("Fire1"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
