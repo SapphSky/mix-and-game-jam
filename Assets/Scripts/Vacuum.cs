@@ -8,16 +8,54 @@ namespace GameJam {
 		public bool hasObjectHeld;
 		public Rigidbody2D heldObject;
 
+		[Tooltip("Element 0: Vacuum Start\n" +
+			"Element 1: Vacuum Loop\n" +
+			"Element 2: Vacuum Stop")]
+		public AudioClip[] audioClips = new AudioClip[3];
+
+		private AudioSource asource;
 		private Rigidbody2D body;
+		private bool playing;
 
 		private void Awake() {
+			asource = GetComponent<AudioSource>();
 			body = GetComponent<Rigidbody2D>();
 		}
 
 		private void Update() {
 			if (active) {
 				Primary();
+
+				if (!playing) {
+					StartCoroutine(PlaySound());
+					playing = true;
+				}
 			}
+			else {
+				if (playing) {
+					StartCoroutine(StopSound());
+					playing = false;
+				}
+			}
+		}
+
+		private IEnumerator PlaySound() {
+			asource.clip = audioClips[0];
+			asource.loop = false;
+			asource.Play();
+
+			yield return new WaitForSeconds(asource.clip.length);
+
+			asource.clip = audioClips[1];
+			asource.loop = true;
+			asource.Play();
+		}
+
+		private IEnumerator StopSound() {
+			asource.clip = audioClips[2];
+			asource.loop = false;
+			asource.Play();
+			yield return null;
 		}
 
 		private void Primary() {
