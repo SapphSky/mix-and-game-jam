@@ -29,14 +29,9 @@ public class EnemyController : MonoBehaviour
     {
         if (!playerDetect)
         {
-
             RandomMovement();
         }
-        else
-        {
-            
-        }
-        
+       
     }
 
     private void RandomMovement()
@@ -47,14 +42,15 @@ public class EnemyController : MonoBehaviour
         Vector2 moveRandom = new Vector2(Random.Range(minRandRangeX,maxRandRangeX),Random.Range(minRandRangeY,maxRandRangeY));
         //set the timer
         randMoveTimer= randMoveTimer - 1 * Time.deltaTime;
-        if(randMoveTimer <= 0)
+        //move the enemy when timer is 0 then reset timer
+        if (randMoveTimer <= 0)
         {
             randMoveTimer = movePause;
 
             enemy.velocity = moveRandom;
         }
     }
-
+    //when player is in radius
     private void OnTriggerStay(Collider other)
     {
         playerDetect = true;
@@ -70,4 +66,6 @@ public class EnemyController : MonoBehaviour
     {
         playerDetect = false;
     }
+
+    
 }
