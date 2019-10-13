@@ -42,7 +42,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: e6bea92cccf0544c8e27e02196a74f6b
     GuidInternal: 
-    m_lastTime: -8586306917297969624
+    m_lastTime: -8586306901719027769
     List:
     - name: Main
       guid: 3f523ffe93c184449bdc9f8175a51d3e
@@ -58,7 +58,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 6cebed298262ff43bf292154681b8142
     GuidInternal: 
-    m_lastTime: -8586306917298103322
+    m_lastTime: -8586306774145754490
     List:
     - name: Bed
       guid: 2cdd8e9f10640b4b962b452b10c84b06
@@ -85,6 +85,20 @@ MonoBehaviour:
       - ElementName: Footstep
         ObjectType: 3
       Path: Default Work Unit\Character\Footstep
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Open_Door
+      guid: 5b2d11357f37e34c86e690297ef86dec
+      id: 2934549620
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Level
+        ObjectType: 4
+      - ElementName: Open_Door
+        ObjectType: 3
+      Path: Default Work Unit\Level\Open_Door
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1

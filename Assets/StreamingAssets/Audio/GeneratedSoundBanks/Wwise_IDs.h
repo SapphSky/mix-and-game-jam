@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID BED = 446279778U;
         static const AkUniqueID FOOTSTEP = 1866025847U;
+        static const AkUniqueID OPEN_DOOR = 2934549620U;
         static const AkUniqueID VACUUM_START = 322689977U;
         static const AkUniqueID VACUUM_STOP = 3750523667U;
     } // namespace EVENTS
