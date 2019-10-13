@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9189fac6e4b9bf644b2268e25202b3fc, type: 3}
+  m_Name: E2311622-89C8-4B09-A8CC-697D405AFBE9
+  m_EditorClassIdentifier: 
+  objectName: Vacuum_Start
+  id: 322689977
+  guid: E2311622-89C8-4B09-A8CC-697D405AFBE9

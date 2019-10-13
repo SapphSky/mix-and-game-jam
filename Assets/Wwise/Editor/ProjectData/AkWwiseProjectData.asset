@@ -12,14 +12,246 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09eba1a7cfaa2d84181b8e9825fac401, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  AcousticTextureWwu: []
-  AuxBusWwu: []
-  BankWwu: []
-  EventWwu: []
-  RtpcWwu: []
-  StateWwu: []
-  SwitchWwu: []
-  TriggerWwu: []
-  ExpandedItems: []
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 385ae9ffd492a84d9f06d80c3fbe7c17
+    GuidInternal: 
+    m_lastTime: -8586307137457736099
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 9ba0fb5052a77040aee5ef4fc9e29846
+    GuidInternal: 
+    m_lastTime: -8586306984101550620
+    List:
+    - name: Reverb
+      guid: 881bd21bb4d23f49b2fde448fbc10bc0
+      id: 348963605
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: Reverb
+        ObjectType: 1
+      Path: Default Work Unit\Master Audio Bus\Reverb
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: e6bea92cccf0544c8e27e02196a74f6b
+    GuidInternal: 
+    m_lastTime: -8586306917297969624
+    List:
+    - name: Main
+      guid: 3f523ffe93c184449bdc9f8175a51d3e
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main
+        ObjectType: 7
+      Path: Default Work Unit\Main
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 6cebed298262ff43bf292154681b8142
+    GuidInternal: 
+    m_lastTime: -8586306917298103322
+    List:
+    - name: Bed
+      guid: 2cdd8e9f10640b4b962b452b10c84b06
+      id: 446279778
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
+      - ElementName: Bed
+        ObjectType: 3
+      Path: Default Work Unit\Ambience\Bed
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Footstep
+      guid: 81987d7a2d69fa48ab0d8a04983d870e
+      id: 1866025847
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Character
+        ObjectType: 4
+      - ElementName: Footstep
+        ObjectType: 3
+      Path: Default Work Unit\Character\Footstep
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Vacuum_Start
+      guid: 221631e2c889094ba8cc697d405afbe9
+      id: 322689977
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Character
+        ObjectType: 4
+      - ElementName: Vacuum
+        ObjectType: 4
+      - ElementName: Vacuum_Start
+        ObjectType: 3
+      Path: Default Work Unit\Character\Vacuum\Vacuum_Start
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Vacuum_Stop
+      guid: ebc6fdf00230bc4d924af26a03422a16
+      id: 3750523667
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Character
+        ObjectType: 4
+      - ElementName: Vacuum
+        ObjectType: 4
+      - ElementName: Vacuum_Stop
+        ObjectType: 3
+      Path: Default Work Unit\Character\Vacuum\Vacuum_Stop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 0885d17125547c42a732089e02974d6c
+    GuidInternal: 
+    m_lastTime: -8586307137458078342
+    List: []
+  - PhysicalPath: Game Parameters\Factory SoundSeed Air Game Syncs.wwu
+    ParentPhysicalPath: 
+    guid: 5577163b42fb8b4598bf96f557afb3b9
+    GuidInternal: 
+    m_lastTime: -8586307149315484563
+    List:
+    - name: SS_Air_Fear
+      guid: 59062ef746431c4ea1b1dab46a05101e
+      id: 1351367891
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Fear
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Fear
+    - name: SS_Air_Freefall
+      guid: 37fe2d2f9e4f944d83d853cca39781ad
+      id: 3002758120
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Freefall
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Freefall
+    - name: SS_Air_Fury
+      guid: dc79aea23acaba4696529986c322a87b
+      id: 1029930033
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Fury
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Fury
+    - name: SS_Air_Month
+      guid: 45b4e209a3c47f44b3ca818a1d925ef7
+      id: 2648548617
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Month
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Month
+    - name: SS_Air_Presence
+      guid: 1a81b7e32f7b0f49b44f5fe51b468041
+      id: 3847924954
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Presence
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Presence
+    - name: SS_Air_RPM
+      guid: ab9048a3d5b92645a64d5290c43ef2dc
+      id: 822163944
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_RPM
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_RPM
+    - name: SS_Air_Size
+      guid: efeb291393a12e47a38c64668b494879
+      id: 3074696722
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Size
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Size
+    - name: SS_Air_Storm
+      guid: db8c3fe9d1063747acaf7cd44bbed783
+      id: 3715662592
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Storm
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Storm
+    - name: SS_Air_TimeOfDay
+      guid: 2ca76f537e8c8b4cae03ef34fdadc314
+      id: 3203397129
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_TimeOfDay
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_TimeOfDay
+    - name: SS_Air_Turbulence
+      guid: 197ba8edaa73a0409f192073606db710
+      id: 4160247818
+      PathAndIcons:
+      - ElementName: Factory SoundSeed Air Game Syncs
+        ObjectType: 12
+      - ElementName: SS_Air_Turbulence
+        ObjectType: 13
+      Path: Factory SoundSeed Air Game Syncs\SS_Air_Turbulence
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: f39f9c9f05a07142a6f96a1b77e7b64b
+    GuidInternal: 
+    m_lastTime: -8586307137457488112
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: b49211bc3481d842918e9ec08c0bed66
+    GuidInternal: 
+    m_lastTime: -8586307137457547630
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 0ef6ebe6f6aa8343a9dc22c2007f7e1e
+    GuidInternal: 
+    m_lastTime: -8586307137458142833
+    List: []
+  ExpandedItems:
+  - /MixJam
+  - /MixJam/Events
+  - /MixJam/Events/Default Work Unit
+  - /MixJam/Events/Default Work Unit/Ambience
+  - /MixJam/Events/Default Work Unit/Character
+  - /MixJam/Events/Default Work Unit/Character/Vacuum
+  - /MixJam/SoundBanks
+  - /MixJam/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
