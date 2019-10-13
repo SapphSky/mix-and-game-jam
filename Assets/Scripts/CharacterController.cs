@@ -10,6 +10,7 @@ namespace GameJam {
 			public string vertical;
 			public string jump;
 
+
 			public string vacuum;
 			public string blower;
 		}
@@ -34,9 +35,19 @@ namespace GameJam {
 			// Move
 			body.AddForce(Vector2.right * Input.GetAxis(inputs.horizontal), ForceMode2D.Impulse);
 
-			// Jump
-			if (Input.GetButtonDown(inputs.jump)) {
-				body.AddForce(Vector2.up * 5.0f, ForceMode2D.Impulse);
+            //velocity restriction
+            if(body.velocity.x >= 5)
+            {
+                body.velocity = new Vector2(4, body.velocity.y);
+            }
+            if (body.velocity.x <= -5)
+            {
+                body.velocity = new Vector2(-4, body.velocity.y);
+            }
+
+            // Jump
+            if (Input.GetButtonDown(inputs.jump)) {
+				body.AddForce(Vector2.up * 10.0f, ForceMode2D.Impulse);
 			}
 
 			// Vacuum input

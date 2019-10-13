@@ -8,6 +8,7 @@ public class SmoothCameraFollow : MonoBehaviour
 
     public float smoothTimeY;
     public float smoothTimeX;
+    public float yOffset;
 
     public GameObject Player;
 
@@ -19,7 +20,7 @@ public class SmoothCameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         float posX = Mathf.SmoothDamp(transform.position.x, Player.transform.position.x, ref velocity.x, smoothTimeX);
-        float posY = Mathf.SmoothDamp(transform.position.y, Player.transform.position.y, ref velocity.y, smoothTimeY);
+        float posY = Mathf.SmoothDamp(transform.position.y + yOffset, Player.transform.position.y, ref velocity.y, smoothTimeY);
 
         transform.position = new Vector3(posX, posY, transform.position.z);
     }
