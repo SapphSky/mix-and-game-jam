@@ -12,19 +12,19 @@ namespace GameJam {
 
 		public LayerMask layerMask;
 
-		//[Tooltip("Element 0: Vacuum Start\n" +
-		//	"Element 1: Vacuum Loop\n" +
-		//	"Element 2: Vacuum Stop")]
-		//public AudioClip[] audioClips = new AudioClip[3];
+		[Tooltip("Element 0: Vacuum Start\n" +
+			"Element 1: Vacuum Loop\n" +
+			"Element 2: Vacuum Stop")]
+		public AudioClip[] audioClips = new AudioClip[3];
 
-		//private AudioSource asource;
-		private Rigidbody2D body;
+		private AudioSource asource;
+		[SerializeField] private Rigidbody2D body;
 		private bool playing;
 
 		private void Awake() {
 			AkSoundEngine.RegisterGameObj(gameObject);
-			//asource = GetComponent<AudioSource>();
-			body = GetComponent<Rigidbody2D>();
+			asource = GetComponent<AudioSource>();
+			// body = GetComponent<Rigidbody2D>();
 		}
 
 		private void Update() {
@@ -45,23 +45,23 @@ namespace GameJam {
 		}
 
 		private IEnumerator PlaySound() {
-			//asource.clip = audioClips[0];
-			//asource.loop = false;
-			//asource.Play();
+			asource.clip = audioClips[0];
+			asource.loop = false;
+			asource.Play();
 
 			yield return new WaitForSeconds(0);
 
-			//asource.clip = audioClips[1];
-			//asource.loop = true;
-			//asource.Play();
-			VacuumSoundStart.Post(gameObject);
+			asource.clip = audioClips[1];
+			asource.loop = true;
+			asource.Play();
+			// VacuumSoundStart.Post(gameObject);
 		}
 
 		private IEnumerator StopSound() {
-			//asource.clip = audioClips[2];
-			//asource.loop = false;
-			//asource.Play();
-			VacuumSoundStop.Post(gameObject);
+			asource.clip = audioClips[2];
+			asource.loop = false;
+			asource.Play();
+			// VacuumSoundStop.Post(gameObject);
 			yield return null;
 		}
 
@@ -81,7 +81,7 @@ namespace GameJam {
 			var distToPoint = obj.position - body.position;
 			obj.AddForce(-distToPoint, ForceMode2D.Force);
 
-			if (distToPoint.magnitude < 1) {
+			if (distToPoint.magnitude < 1.5) {
 				HoldObject(obj);
 				active = false;
 			}
@@ -91,15 +91,19 @@ namespace GameJam {
 			heldObject = obj;
 			hasObjectHeld = true;
 
-			var joint = obj.gameObject.AddComponent<FixedJoint2D>();
-			joint.connectedBody = body;
+			var joint = body.GetComponent<RelativeJoint2D>();
+			joint.connectedBody = obj;
+			obj.GetComponent<Collider2D>().enabled = false;
 		}
 
 		public void ReleaseObject() {
-			
-			Destroy(heldObject.gameObject.GetComponent<FixedJoint2D>());
+			if (heldObject == null)
+				return;
+
+			body.GetComponent<RelativeJoint2D>().connectedBody = null;
 			heldObject.AddForce(transform.right * 20, ForceMode2D.Impulse);
-			
+			heldObject.GetComponent<Collider2D>().enabled = true;
+
 			hasObjectHeld = false;
 			heldObject = null;
 		}

@@ -12,7 +12,7 @@ public class CharacterAnimator : MonoBehaviour {
 	}
 
 	private void Update() {
-		animator.SetFloat("Locomotion", Mathf.Abs(player.velocity.x));
+		animator.SetFloat("Locomotion", Mathf.Abs(player.velocity.magnitude / 5));
 
 		if (player.velocity.x < 0) {
 			transform.rotation = Quaternion.Euler(Vector3.up * -90);

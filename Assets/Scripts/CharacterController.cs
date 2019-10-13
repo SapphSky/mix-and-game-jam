@@ -60,7 +60,7 @@ namespace GameJam {
 		private void FixedUpdate() {
 			Vector2 lookDir = mousePos - aim.position;
 			float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-			aim.rotation = angle;
+			aim.MoveRotation(angle);
 		}
 	}
 }
