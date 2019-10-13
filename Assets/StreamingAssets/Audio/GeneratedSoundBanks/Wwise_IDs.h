@@ -16,6 +16,7 @@ namespace AK
         static const AkUniqueID BED = 446279778U;
         static const AkUniqueID FOOTSTEP = 1866025847U;
         static const AkUniqueID FURNITURE_MOVE = 2963530811U;
+        static const AkUniqueID FURNITURE_STOP = 4032622676U;
         static const AkUniqueID OPEN_DOOR = 2934549620U;
         static const AkUniqueID VACUUM_START = 322689977U;
         static const AkUniqueID VACUUM_STOP = 3750523667U;
@@ -33,6 +34,7 @@ namespace AK
         static const AkUniqueID SS_AIR_STORM = 3715662592U;
         static const AkUniqueID SS_AIR_TIMEOFDAY = 3203397129U;
         static const AkUniqueID SS_AIR_TURBULENCE = 4160247818U;
+        static const AkUniqueID VELOCITY = 3519441192U;
     } // namespace GAME_PARAMETERS
 
     namespace BANKS

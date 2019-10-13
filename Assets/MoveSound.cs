@@ -6,6 +6,8 @@ public class MoveSound : MonoBehaviour
 {
   bool didItPlay = false;
   public AK.Wwise.Event MovingSound = null;
+  public AK.Wwise.Event StopMovingSound = null;
+  public AK.Wwise.RTPC Velocity = null;
       
   
       void Update () 
@@ -14,11 +16,13 @@ public class MoveSound : MonoBehaviour
           {
               MovingSound.Post(gameObject);
               didItPlay = true;
+              Velocity.SetValue(gameObject, GetComponent<Rigidbody2D>().velocity.magnitude);
           }
-          else
+           else if (GetComponent<Rigidbody2D>().velocity.magnitude == 0 && didItPlay)
           {
-             // MovingSound.Stop(gameObject);
-             // didItPlay = false;
+            StopMovingSound.Post(gameObject);
+            didItPlay = false;
+
           }
 
 
