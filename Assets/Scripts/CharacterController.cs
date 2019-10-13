@@ -9,17 +9,19 @@ namespace GameJam {
 			public string horizontal;
 			public string vertical;
 			public string jump;
-
-
 			public string vacuum;
 			public string blower;
 		}
 		[Tooltip("Assign input axes here.")]
 		public Inputs inputs;
 
-		[SerializeField] private Rigidbody2D body;
-		[SerializeField] private Rigidbody2D aimBody;
+		public bool canMove;
+		public bool canJump;
+		public bool canUseVacuum;
 
+		[SerializeField] private Vacuum vacuum;
+		[SerializeField] private Rigidbody2D body;
+		[SerializeField] private Rigidbody2D aim;
 		private Camera cam;
 		private Vector2 mousePos;
 
@@ -29,35 +31,36 @@ namespace GameJam {
 		}
 
 		private void Update() {
-			// Aim
 			mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-			// Move
-			body.AddForce(Vector2.right * Input.GetAxis(inputs.horizontal), ForceMode2D.Impulse);
+			if (body.velocity.x >= 5) {
+				body.velocity = new Vector2(4, body.velocity.y);
+			}
+			if (body.velocity.x <= -5) {
+				body.velocity = new Vector2(-4, body.velocity.y);
+			}
 
-            //velocity restriction
-            if(body.velocity.x >= 5)
-            {
-                body.velocity = new Vector2(4, body.velocity.y);
-            }
-            if (body.velocity.x <= -5)
-            {
-                body.velocity = new Vector2(-4, body.velocity.y);
-            }
+			if (canMove) {
+				body.AddForce(Vector2.right * Input.GetAxis(inputs.horizontal), ForceMode2D.Impulse);
+			}
 
-            // Jump
-            if (Input.GetButtonDown(inputs.jump)) {
+			
+			if (canJump && Input.GetButtonDown(inputs.jump)) {
 				body.AddForce(Vector2.up * 10.0f, ForceMode2D.Impulse);
 			}
 
-			// Vacuum input
-			aimBody.GetComponent<Vacuum>().active = Input.GetButton(inputs.vacuum);
+			if (canUseVacuum) {
+				vacuum.active = Input.GetButton(inputs.vacuum);
+				if (Input.GetButtonDown(inputs.blower)) {
+					vacuum.ReleaseObject();
+				}
+			}
 		}
 
 		private void FixedUpdate() {
-			Vector2 lookDir = mousePos - body.position;
+			Vector2 lookDir = mousePos - aim.position;
 			float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-			aimBody.rotation = angle;
+			aim.rotation = angle;
 		}
 	}
 }

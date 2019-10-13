@@ -10,6 +10,8 @@ namespace GameJam {
 		public bool hasObjectHeld;
 		public Rigidbody2D heldObject;
 
+		public LayerMask layerMask;
+
 		//[Tooltip("Element 0: Vacuum Start\n" +
 		//	"Element 1: Vacuum Loop\n" +
 		//	"Element 2: Vacuum Stop")]
@@ -26,7 +28,7 @@ namespace GameJam {
 		}
 
 		private void Update() {
-			if (active) {
+			if (active && !hasObjectHeld) {
 				Primary();
 
 				if (!playing) {
@@ -65,7 +67,7 @@ namespace GameJam {
 
 		private void Primary() {
 			Debug.DrawLine(body.position, body.transform.right * 3.0f);
-			RaycastHit2D[] hits = Physics2D.CapsuleCastAll(transform.position, new Vector2(0.5f, 3.0f), CapsuleDirection2D.Vertical, 0, Vector2.right);
+			RaycastHit2D[] hits = Physics2D.RaycastAll(body.position, body.transform.right, 5.0f, layerMask);
 			if (hits.Length > 0) {
 				foreach (var item in hits) {
 					if (item.transform.GetComponent<Rigidbody2D>()) {
@@ -78,16 +80,28 @@ namespace GameJam {
 		private void PullTowards(Rigidbody2D obj) {
 			var distToPoint = obj.position - body.position;
 			obj.AddForce(-distToPoint, ForceMode2D.Force);
+
+			if (distToPoint.magnitude < 1) {
+				HoldObject(obj);
+				active = false;
+			}
 		}
 
 		private void HoldObject(Rigidbody2D obj) {
+			heldObject = obj;
+			hasObjectHeld = true;
+
 			var joint = obj.gameObject.AddComponent<FixedJoint2D>();
-			joint.connectedBody = GetComponent<Rigidbody2D>();
+			joint.connectedBody = body;
 		}
 
-		private void ReleaseObject(Rigidbody2D obj) {
-			Destroy(obj.gameObject.GetComponent<FixedJoint2D>());
-			obj.AddForce(transform.right * 5, ForceMode2D.Impulse);
+		public void ReleaseObject() {
+			
+			Destroy(heldObject.gameObject.GetComponent<FixedJoint2D>());
+			heldObject.AddForce(transform.right * 20, ForceMode2D.Impulse);
+			
+			hasObjectHeld = false;
+			heldObject = null;
 		}
 	}
 }
